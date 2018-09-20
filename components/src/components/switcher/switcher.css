@@ -1,0 +1,58 @@
+:host {
+    display: inline-block;
+}
+
+:host(:focus) {
+    outline: none;
+}
+
+.switcher {
+    background: var(--strawberry-color--noise, #ebeff8);
+    border-radius: 14px;
+    cursor: pointer;
+    display: block;
+    height: 28px;
+    position: relative;
+    transition: .3s;
+    width: 48px;
+}
+
+.switcher::after {
+    background: var(--strawberry-color--white, #fff);
+    border-radius: 50%;
+    content: '';
+    display: inline-block;
+    height: 24px;
+    left: 2px;
+    position: absolute;
+    top: 2px;
+    width: 24px;
+}
+
+.switcher--switched {
+    background: var(--strawberry-color--success, #79ca01);
+}
+
+.switcher--switched::after {
+    left: 22px;
+}
+
+.switcher--play-switched::after {
+    animation: .3s on linear forwards;
+}
+
+.switcher--play-unswitched::after {
+    animation: .3s off linear forwards;
+}
+
+@keyframes on {
+    0% { left: 2px; }
+    50% { transform: scaleX(1.17); }
+    100% { left: 22px; transform: scaleX(1); }
+}
+
+@keyframes off {
+    0% { left: 22px; }
+    50% { width: scaleX(1.17); }
+    100% { left: 2px; transform: scaleX(1); }
+}
